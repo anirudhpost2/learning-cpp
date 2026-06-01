@@ -1,4 +1,4 @@
-#include "ChangeMaker.h"
+#include "../include/ChangeMaker.h"
 #include <iostream>
 #include <cmath>
 
@@ -32,7 +32,7 @@ void ChangeMaker::calculateChange(double charged, double given) const {
     }
 }
 
-int doProcess() {
+void ChangeMaker::doProcess() {
     double bill, payment;
     std::cout << "Enter amount charged: ";
     std::cin >> bill;
@@ -41,5 +41,4 @@ int doProcess() {
 
     ChangeMaker cm;
     cm.calculateChange(bill, payment);
-    return 0;
 }

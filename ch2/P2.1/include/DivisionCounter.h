@@ -7,6 +7,7 @@ private:
 public:
     DivisionCounter(long long val);
     int countDivisions() const;
+    int doProcess();
 };
 
 #endif

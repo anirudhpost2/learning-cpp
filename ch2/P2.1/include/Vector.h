@@ -17,6 +17,7 @@ public:
     Complex operator-(const Complex& o) const;
     Complex operator*(const Complex& o) const;
     friend std::ostream& operator<<(std::ostream& os, const Complex& c);
+    int doProcess();
 };
 
 // Templated Class Space Architecture

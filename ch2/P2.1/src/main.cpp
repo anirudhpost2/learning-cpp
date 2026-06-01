@@ -1,17 +1,31 @@
-#include "DivisionCounter.h"
 #include <iostream>
+#include "Vector.h"
+#include "ChangeMaker.h"
+#include "DivisionCounter.h"
+using namespace std;
 
 int main() {
-    long long num;
-    std::cout << "Enter a number: ";
-    std::cin >> num;
+  // cout << "Project 1" << endl;
+  // cout << "Start Execution" << endl;
+  // DivisionCounter* p1 = new DivisionCounter();
+  // p1->doProcess();
+  // cout << "Completed Execution" << endl;
+  // cout << "=========" << endl;
 
-    if (num <= 2) {
-        std::cout << "The number must be greater than 2.\n";
-        return 1;
-    }
-    
-    DivisionCounter dc(num);
-    std::cout << "Repeated divisions: " << dc.countDivisions() << "\n";
-    return 0;
+  // cout << "Project 2" << endl;
+  // cout << "Start Execution" << endl;
+  // ChangeMaker* p2 = new ChangeMaker();
+  // p2->doProcess();
+  // cout << "Completed Execution" << endl;
+  // cout << "=========" << endl;
+
+    // cout << "Project 3" << endl;
+    // cout << "Start Execution" << endl;
+    // std::vector<int> p3;
+    // p3.push_back(0);
+    // cout << "Vector size: " << p3.size() << endl;
+    // cout << "Completed Execution" << endl;
+    // cout << "=========" << endl;
+
+  return 0;
 }

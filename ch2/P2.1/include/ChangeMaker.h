@@ -15,6 +15,7 @@ private:
 public:
     ChangeMaker();
     void calculateChange(double charged, double given) const;
+    int doProcess();
 };
 
 #endif

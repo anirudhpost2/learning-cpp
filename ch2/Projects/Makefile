@@ -1,37 +1,36 @@
-# Compiler settings - Updated to use the absolute path to your MSYS2 installation
-CXX = C:/msys64/ucrt64/bin/g++.exe
-CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude
+# Compiler
+CXX := C:/msys64/mingw64/bin/g++.exe
 
-# Directory mappings
-SRCDIR = src
-BUILDDIR = build
-TARGET = $(BUILDDIR)/app.exe
+# Compiler flags
+CXXFLAGS := -Wall -Wextra -std=c++17 -Iinclude
 
-# Manually list your source files to ensure Windows/MSYS paths read them perfectly
-SRCS = $(SRCDIR)/main.cpp \
-       $(SRCDIR)/ChangeMaker.cpp \
-       $(SRCDIR)/DivisionCounter.cpp \
-       $(SRCDIR)/Vector.cpp \
-       $(SRCDIR)/Animal.cpp
+# Directories
+SRC_DIR := src
+BUILD_DIR := build
+INCLUDE_DIR := include
 
-# Convert source file strings into object files inside the build directory
-OBJS = $(patsubst $(SRCDIR)/%.cpp, $(BUILDDIR)/%.o, $(SRCS))
+# Target
+TARGET := $(BUILD_DIR)/app.exe
 
-# Default build rule
+# Source files (Automatically grabs main.cpp and all other .cpp files inside src/)
+SRCS := $(wildcard $(SRC_DIR)/*.cpp)
+
+# Object files go into build/ (Corrected to use $(SRCS))
+OBJ := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
+
+# Default target
 all: $(TARGET)
 
-# Linker rule: Combines the compiled object files into the final app executable
-$(TARGET): $(OBJS)
-	@mkdir -p $(BUILDDIR)
-	$(CXX) -o $(TARGET) $(OBJS)
+# Link object files into executable
+$(TARGET): $(OBJ)
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Compilation rule: Turns each individual .cpp file into a .o file
-$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(BUILDDIR)
+# Compile .cpp -> .o in build/
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean rule to clear out old build artifacts
-clean:
-	rm -rf $(BUILDDIR)
-
 .PHONY: all clean
+clean:
+	rm -Rf $(BUILD_DIR) 2>NULL

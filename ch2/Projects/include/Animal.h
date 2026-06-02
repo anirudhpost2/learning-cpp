@@ -19,7 +19,7 @@ public:
     float getStrength() const;
     std::string getGenderStr() const;
 
-    static std::shared_ptr<Animal> collide(std::shared_ptr<Animal>& a1, std::shared_ptr<Animal>& a2);
+    static void collide(std::shared_ptr<Animal>& a1, std::shared_ptr<Animal>& a2);
 };
 
 #endif

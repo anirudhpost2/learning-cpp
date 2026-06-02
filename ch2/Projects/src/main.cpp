@@ -1,11 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <memory>
 
-// Include your actual project header files
-#include "../include/DivisionCounter.h"
-#include "../include/ChangeMaker.h"
-#include "../include/Vector.h"
-#include "../include/Animal.h"
+#include "DivisionCounter.h"
+#include "ChangeMaker.h"
+#include "Vector.h"
+#include "Animal.h"
+#include "Polygon.h"
+#include "CharTracker.h"
+#include "WordTracker.h"
 
 int main() {
     std::cout << "Select which project to run:\n";
@@ -13,21 +16,26 @@ int main() {
     std::cout << "2. Change Maker (P-2.2)\n";
     std::cout << "3. Numeric Vector (P-2.3)\n";
     std::cout << "4. Animal Combat Simulation (P-2.4)\n";
+    std::cout << "5. Polygon Area & Perimeter (P-2.5)\n";
+    std::cout << "6. Character Frequency Tracker (P-2.6)\n";
+    std::cout << "7. Word Frequency Tracker (P-2.7)\n";
     std::cout << "Choice: ";
     
     int choice;
-    std::cin >> choice;
+    if (!(std::cin >> choice)) {
+        std::cout << "Invalid input. Exiting.\n";
+        return 1;
+    }
 
     switch (choice) {
         case 1: {
             std::cout << "Project 1\nStart Execution\n";
             
-            // Allocate memory on the heap using 'new' instead of setting it to 0
             DivisionCounter* dc = new DivisionCounter(0); 
             dc->doProcess();
             
             std::cout << "Completed Execution\n=========\n";
-            delete dc; // Clean up memory safely
+            delete dc; 
             break;
         }
         case 2: {
@@ -37,13 +45,12 @@ int main() {
             p2->doProcess();
             
             std::cout << "Completed Execution\n=========\n";
-            delete p2; // Clean up memory safely
+            delete p2; 
             break;
         }
         case 3: {
             std::cout << "Project 3\nStart Execution\n";
             
-            // Run your P-2.3 MathVector implementation
             MathVector<Complex> cv(2);
             cv.set(0, Complex(2, 3));
             cv.set(1, Complex(1, 2));
@@ -58,12 +65,37 @@ int main() {
         case 4: {
             std::cout << "Project 4\nStart Execution\n";
             
-            // Interaction Simulation
+            // Instantiates base Animal pointers matching your void collide() signature
             auto tiger1 = std::make_shared<Animal>("Tiger", true, 9.1f);
             auto tiger2 = std::make_shared<Animal>("Tiger", true, 6.4f);
 
             std::cout << "--- Triggering Combat Dispute ---\n";
             Animal::collide(tiger1, tiger2);
+            
+            std::cout << "Completed Execution\n=========\n";
+            break;
+        } 
+        case 5: {
+            std::cout << "Project 5\nStart Execution\n";
+            Polygon* poly = new Square(); 
+            poly->doProcess();
+            delete poly;
+            
+            std::cout << "Completed Execution\n=========\n";
+            break;
+        }
+        case 6: {
+            std::cout << "Project 6\nStart Execution\n";
+            CharTracker ct;
+            ct.doProcess();
+            
+            std::cout << "Completed Execution\n=========\n";
+            break;
+        }
+        case 7: {
+            std::cout << "Project 7\nStart Execution\n";
+            WordTracker wt;
+            wt.doProcess();
             
             std::cout << "Completed Execution\n=========\n";
             break;

@@ -1,5 +1,5 @@
 # Compiler
-CXX := g++
+CXX := C:/msys64/mingw64/bin/g++.exe
 
 # Compiler flags
 CXXFLAGS := -Wall -Wextra -std=c++17 -Iinclude
@@ -12,11 +12,11 @@ INCLUDE_DIR := include
 # Target
 TARGET := $(BUILD_DIR)/app.exe
 
-# Source files
-SRC := $(wildcard $(SRC_DIR)/*.cpp)
+# Source files (Automatically grabs main.cpp and all other .cpp files inside src/)
+SRCS := $(wildcard $(SRC_DIR)/*.cpp)
 
-# Object files go into build/
-OBJ := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))
+# Object files go into build/ (Corrected to use $(SRCS))
+OBJ := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
 
 # Default target
 all: $(TARGET)
